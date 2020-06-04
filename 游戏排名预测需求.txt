@@ -1,0 +1,48 @@
+1.使用jupyter notebook 需要对每一步进行展示并进行注释
+
+2.数据集介绍：
+（1）
+PUBG游戏数据集
+（2）
+ID-玩家ID
+groupId-标识匹配项中的组的ID。如果同一组玩家参加不同的比赛，则他们每次将具有不同的groupId。
+matchId-标识匹配项的ID。训练和测试集中都没有匹配项。
+assists-助攻被队友杀死的敌方玩家数量。
+boosts-使用的增强项数。
+DamageDealt-造成的总伤害。注意：减去自我造成的损害。
+DBNOs-击倒的敌方玩家数量。
+headshotKills-被爆头杀死的敌方玩家数量。
+heals-治愈使用的治疗物品数量。
+killPlace-被杀死的敌方玩家数量排名。
+killPoints-基于击杀的玩家外部排名。（将其视为仅杀死事物的Elo等级。）如果rankPoints中的值不是-1，则killPoints中的任何0都应被视为“无”。
+kills-被杀死的敌方玩家数量。
+killStreaks-在短时间内杀死的敌方玩家数量上限。
+longestKill-玩家与死亡时被杀死的玩家之间的最长距离。这可能会产生误导，因为击落玩家并开车离开可能导致最长的杀手统计。
+matchDuration-比赛持续时间（以秒为单位）。
+matchType-标识数据来自的游戏模式的字符串。标准模式是“ solo”，“ duo”，“ squad”，“ solo-fpp”，“ duo-fpp”和“ squad-fpp”；其他模式来自事件或自定义匹配。
+maxPlace-最差的位置，我们具有比赛数据。这可能与numGroups不匹配，因为有时数据会跳过展示位置。
+numGroups-我们在比赛中拥有数据的组数。
+rankPoints-类似于 Elo的玩家排名。此排名不一致，并且在API的下一版本中已过时，请谨慎使用。值-1代替“无”。
+revives-复活该队员使队友复活的次数。
+rideDistance-车辆行驶的总距离，以米为单位。
+roadKills-车辆中的死亡人数。
+swimDistance-游泳旅行的总距离，以米为单位。
+teamKills-该玩家杀死队友的次数。
+vehicleDestroys-销毁的车辆数量。
+walkDistance-步行的总距离，以米为单位。
+weaponsAcquired -武器数量回升。
+winPoints-基于胜利的玩家外部排名。（将其视为仅影响获胜的Elo排名。）如果rankPoints中的值不是-1，则winPoints中的任何0都应被视为“无”。
+winPlacePerc-预测目标。这是一个百分位数的获胜位置，其中1对应于第一名，0对应于比赛中的最后一位。它是根据maxPlace而不是numGroups计算得出的，因此匹配中可能缺少块。
+
+
+3. 过程：
+（1）数据探索与预处理
+	显示一些统计信息，处理空值无用信息
+（2）数据分析与建模
+	特征选择等
+（3）模型检验和评价，多种模型分析比较；
+	需要多种方法，每种方法检测最优参数
+	对比多种模型并进行分析比较
+（4）总结分析
+
+是这样的 这个数据集是2019年kaggle上的一个小型比赛的数据集 是关于PUBG绝地求生的比赛数据 要求就是预测排名 。 但是，我现在是要把它做成一个期末的展示项目。特征选择建立模型之前的探索性分析可以参考这个的效果https://www.kaggle.com/deffro/eda-is-fun#Solos,-Duos-and-Squads 特征选择可以自己创建一些特征，比如我看训练集里面有kill assist boost的就可以把三个特征归纳为KDA。 模型就10几种模型选5种模型进行预测就行了，精度只要不是差的太离谱。每一种模型的参数进行网格优化一类的，然后评价性能，能够输出表格进行对比最好
